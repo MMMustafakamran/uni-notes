@@ -7,7 +7,6 @@ Organized notes and resources for my university courses. Handwritten PDFs have a
 | AI / Machine Learning | [ai-machine-learning](ai-machine-learning/) |
 | Algorithms | [algorithms](algorithms/) |
 | Databases | [databases](databases/) |
-| Digital Logic Design | [digital-logic-design](digital-logic-design/) |
 | Generative AI | [generative-ai](generative-ai/) |
 | Information Security | [information-security](information-security/) |
 | MLOps | [mlops](mlops/) |
@@ -17,8 +16,9 @@ Organized notes and resources for my university courses. Handwritten PDFs have a
 
 | Course | Folder |
 |---|---|
-| Compiler Construction | [othercourses/compiler-construction](othercourses/compiler-construction/) |
-| Numerical Computing | [othercourses/numerical-computing](othercourses/numerical-computing/) |
-| Parallel & Distributed Computing | [othercourses/parallel-distributed-computing](othercourses/parallel-distributed-computing/) |
-| Software Engineering | [othercourses/software-engineering](othercourses/software-engineering/) |
-| Statistical Modeling | [othercourses/statistical-modeling](othercourses/statistical-modeling/) |
+| Digital Logic Design | [1-othercourses/digital-logic-design](1-othercourses/digital-logic-design/) |
+| Compiler Construction | [1-othercourses/compiler-construction](1-othercourses/compiler-construction/) |
+| Numerical Computing | [1-othercourses/numerical-computing](1-othercourses/numerical-computing/) |
+| Parallel & Distributed Computing | [1-othercourses/parallel-distributed-computing](1-othercourses/parallel-distributed-computing/) |
+| Software Engineering | [1-othercourses/software-engineering](1-othercourses/software-engineering/) |
+| Statistical Modeling | [1-othercourses/statistical-modeling](1-othercourses/statistical-modeling/) |
