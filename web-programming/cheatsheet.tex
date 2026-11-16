@@ -1,0 +1,529 @@
+\documentclass[8pt, a4paper, landscape]{extarticle}
+
+\usepackage[left=0.2cm,right=0.1cm,top=0.1cm,bottom=0.1cm]{geometry}
+\usepackage{multicol}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{microtype} % Better character spacing to save horizontal space
+\usepackage{anyfontsize} % Allow arbitrary font sizes
+
+% --- Visual Setup ---
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\columnsep}{0.1cm} % Reduced from 0.2cm
+
+% --- Code Formatting (Rich & Multicolored) ---
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codeblue}{rgb}{0.0,0.3,0.7}
+\definecolor{codepurple}{rgb}{0.5,0,0.5}
+\definecolor{codeorange}{rgb}{0.8,0.4,0}
+\definecolor{codered}{rgb}{0.8,0,0}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with, as, async, await, const, let},
+  morekeywords=[2]{require, exports, module, process, console, express, app, mongoose, Schema, model, ObjectId, os, path, dns, React, Component, useState, useEffect, axios, BrowserRouter, Route, Link, Switch},
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  morestring=[b]`
+}
+
+\lstdefinelanguage{HTMLCSS}{
+  keywords={html, body, div, img, meta, link, script, class, id, src, alt, name, content, href, rel, type, style, table, tr, th, td, form, label, input, select, option, textarea, button, a, br, hr},
+  morekeywords=[2]{width, height, max-width, min-width, box-sizing, border-box, auto, display, margin, padding, @media, screen, border, target, value, rows, cols, required, type, selected, disabled, transition, transform, rotate, scale, color, background, font-family, font-size, font-weight, text-align, text-decoration, border-style, border-width},
+  sensitive=false,
+  morecomment=[l]{<!--},
+  morecomment=[s]{<!--}{-->},
+  morestring=[b]",
+  morestring=[b]'
+}
+
+\lstset{
+    language=JavaScript,
+    backgroundcolor=\color{white},
+    basicstyle=\ttfamily\fontsize{5}{5}\selectfont,
+    commentstyle=\color{codegreen}\fontsize{5}{5}\selectfont,
+    keywordstyle=\color{codeblue}\bfseries\fontsize{5}{5}\selectfont,
+    keywordstyle=[2]\color{codeorange}\fontsize{5}{5}\selectfont,
+    stringstyle=\color{codepurple}\fontsize{5}{5}\selectfont,
+    identifierstyle=\color{black}\fontsize{5}{5}\selectfont,
+    breaklines=true,
+    tabsize=2,
+    frame=lr,
+    framerule=0.2pt,
+    xleftmargin=0pt,
+    xrightmargin=0pt,
+    aboveskip=0pt,
+    belowskip=1pt,
+    showstringspaces=false,
+    escapeinside={(*@}{@*)}
+}
+
+% --- Force 5pt Font Globally ---
+\newcommand{\forcefivept}{\fontsize{5}{5}\selectfont}
+\renewcommand{\tiny}{\forcefivept}
+\renewcommand{\scriptsize}{\forcefivept}
+\renewcommand{\footnotesize}{\forcefivept}
+\renewcommand{\small}{\forcefivept}
+\renewcommand{\normalsize}{\forcefivept}
+\renewcommand{\large}{\forcefivept}
+\renewcommand{\Large}{\forcefivept}
+\renewcommand{\LARGE}{\forcefivept}
+\renewcommand{\huge}{\forcefivept}
+\renewcommand{\Huge}{\forcefivept}
+
+% Redefine \textbf to strictly use 5pt
+\let\oldtextbf\textbf
+\renewcommand{\textbf}[1]{\oldtextbf{\forcefivept #1}}
+
+\forcefivept 
+
+% --- Unified Heading Numbering with Compact Grey Box ---
+\newcounter{unifiedsection}
+\newcommand{\compactsection}[1]{%
+    \stepcounter{unifiedsection}%
+    \vspace{0.5pt}% reduced from 1pt
+    \noindent%
+    {\setlength{\fboxsep}{0.5pt}% reduced from 1pt
+    \colorbox{black!10}{%
+        \makebox[\dimexpr\linewidth-2\fboxsep\relax][l]{\forcefivept\textbf{\theunifiedsection. #1}}%
+    }}%
+    \vspace{0.5pt}% reduced from 1pt
+}
+
+% --- Major Topic Header (Extreme Compact) ---
+\newcommand{\topicsection}[1]{%
+    \vspace{2pt}% reduced from 4pt
+    \noindent%
+    {\setlength{\fboxsep}{1.5pt}% reduced from 2pt
+    \colorbox{black}{%
+        \makebox[\dimexpr\linewidth-2\fboxsep\relax][c]{\color{white}\forcefivept\textbf{#1}}% font size 5pt
+    }}%
+    \vspace{1pt}% reduced from 2pt
+}
+
+% Global List settings
+\setlist{nosep, leftmargin=*} 
+
+\begin{document}
+\forcefivept % Set body font to 5pt
+
+\begin{multicols*}{3}
+
+\topicsection{HTML FUNDAMENTALS}
+
+\textbf{Links:} \texttt{<a href="URL" target="\_blank">} (\texttt{\_blank} opens new tab). \\
+\textbf{Void Elements:} No closing tag e.g. \texttt{<img>, <br> (break), <hr> (line)}. \\
+\textbf{Images:} \texttt{<img src="path" alt="desc" width="300">} (\texttt{alt} is for accessibility).
+\begin{lstlisting}[language=HTMLCSS]
+<table border="1">
+  <tr> <!-- Table Row -->
+    <th>H1</th> <th>H2</th> 
+  </tr>
+  <tr>
+    <td>D1</td> <td>D2</td> 
+  </tr></table>
+\end{lstlisting}
+
+\begin{lstlisting}[language=HTMLCSS]
+<form>
+  <label for="n">Name:</label>
+  <input type="text" id="n" name="n" required>
+  <!-- Radio: Same 'name' = Only 1 choice -->
+  <input type="radio" name="g" value="m"> Male
+  <input type="radio" name="g" value="f"> Female
+  <!-- Checkbox: Multiple choices allowed -->
+  <input type="checkbox" name="s" value="js"> JS
+  <!-- Dropdown Menu -->
+  <select name="course" required>
+    <option value="" disabled selected>Select</option>
+    <option value="fs">Full Stack</option>
+  </select>
+  <textarea rows="4" cols="40"></textarea>
+  <button type="submit">Submit</button></form>
+\end{lstlisting}
+
+\topicsection{CSS FUNDAMENTALS}
+
+\textbf{Rule:} \texttt{selector \{ property: value; \}}. \\
+\textbf{Methods:} 1. \textbf{Inline:} \texttt{<h1 style="color:red;">}. 2. \textbf{Internal:} \texttt{<style>} in head. 3. \textbf{External:} \texttt{<link rel="stylesheet" href="s.css">}. \\
+\textbf{Priority:} Inline $>$ Internal $>$ External (Cascading).
+
+\compactsection{Selectors \& Box Model}
+\textbf{Tag:} \texttt{p \{ \}} $\mid$ \textbf{ID:} \texttt{\#hdr \{ \}} (Unique) $\mid$ \textbf{Class:} \texttt{.btn \{ \}} (Multiple) $\mid$ \textbf{Group:} \texttt{h1, p \{ \}}. \\
+\textbf{Box Model:} 1. \textbf{Content} (Text/Img) $\to$ 2. \textbf{Padding} (Space inside border) $\to$ 3. \textbf{Border} $\to$ 4. \textbf{Margin} (Area outside border).
+
+\compactsection{Visual Properties \& Transitions}
+\textbf{Background Shorthand:}
+\texttt{background: \#fff url("i.png") no-repeat fixed right top;} \\
+\textbf{Links:} \texttt{a:link, a:visited, a:hover, a:active} (Order matters!). \\
+\textbf{Transform:} \texttt{rotate(180deg), scale(2), translate(10px)}.
+
+\begin{lstlisting}[language=HTMLCSS]
+div {width: 300px;;transition: width 2s, transform 2s;} /* Smooth animation */
+div:hover {transform: rotate(180deg);}
+\end{lstlisting}
+
+\topicsection{RESPONSIVE DESIGN \& BOOTSTRAP}
+
+\begin{lstlisting}[language=HTMLCSS]
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+\end{lstlisting}
+
+\begin{lstlisting}[language=HTMLCSS]
+* { box-sizing: border-box; } // Padding doesn't increase width
+img { max-width: 100%; height: auto; } // Responsive image
+\end{lstlisting}
+
+\begin{lstlisting}[language=HTMLCSS]
+.column { width: 100%; }
+@media screen and (min-width: 768px) {
+.column { width: 50%; } // Tablet/Desktop
+} //Default (Mobile)
+\end{lstlisting}
+
+\compactsection{Bootstrap 5 Grid System}
+\textbf{Breakpoints:} \texttt{-sm} (576px), \texttt{-md} (768px), \texttt{-lg} (992px), \texttt{-xl} (1200px), \texttt{-xxl} (1400px). \\
+\textbf{Container:} Centers content. \textbf{Row:} Flex wrap. \textbf{Col:} 12-unit grid.
+\begin{lstlisting}[language=HTMLCSS]
+<div class="container">
+  <div class="row">
+    <!-- col-12=Mobile, col-lg-3=1/4 Desktop -->
+      <div class="card">
+        <img src="p1.jpg" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">Profile</h5>
+          <p class="card-text">Skills: HTML, CSS</p>
+</div></div></div>
+\end{lstlisting}
+\topicsection{EXPRESS JS}
+
+\compactsection{Core Server Setup}
+Require Express, initialize, and listen on port.
+\begin{lstlisting}
+const express = require('express');
+const app = express();
+const PORT = 3000;
+app.get('/', (req, res) => res.send('Hello World!'));
+app.listen(PORT, () => console.log(`Run on ${PORT}`));
+\end{lstlisting}
+
+\compactsection{Route Path Patterns (Exam)}
+\textbf{ab?cd} $\to$ b optional (\texttt{acd, abcd}) $\mid$ \textbf{ab+cd} $\to$ 1+ b (\texttt{abcd, abbcd}) $\mid$ \textbf{ab*cd} $\to$ anything between (\texttt{abxcd, ab12cd}) $\mid$ \textbf{/.*fly\$/} $\to$ ends with "fly" (\texttt{dragonfly}) $\mid$ \textbf{:id} $\to$ param (\texttt{/user/34} $\to$ \texttt{req.params.id=34})
+
+\compactsection{Middleware Flow (Exam Focus)}
+Needs (req, res, next). Executes in order. If \texttt{next()} isn't called, request hangs.\\
+\textbf{t1/t2 Analysis:} Made to \texttt{/about}:
+\begin{enumerate}
+    \item \texttt{app.use((req, res, next) $\to$ \{ console.log("t1"); next(); \});} $\to$ output: t1.
+    \item \texttt{app.get("/about1", ...)} $\to$ Skipped (no match).
+    \item \texttt{app.use((req, res, next) $\to$ \{ console.log("t2"); \});} $\to$ Logs t2. \textbf{No next()!}
+    \item \texttt{app.get("/about")} is never reached.
+\end{enumerate}
+
+\compactsection{Types of Middleware}
+\begin{enumerate}
+    \item \textbf{Application:} \texttt{app.use()}. Runs for all.
+    \item \textbf{Router:} \texttt{express.Router()}. Modular (e.g., \texttt{/api}).
+    \item \textbf{Built-in:} \texttt{express.static}, \texttt{express.json}.
+    \item \textbf{Error:} 4 args: \texttt{(err, req, res, next)}.
+\end{enumerate}
+
+\compactsection{Response Methods}
+\begin{itemize}
+    \item \texttt{res.send('text/html')} $\mid$ \texttt{res.json(\{obj\})} (APIs)
+    \item \texttt{res.render('view', \{dat\})} (EJS/Templates)
+    \item \texttt{res.status(404).send('Msg')} $\mid$ \texttt{res.redirect('/url')}
+\end{itemize}
+
+\compactsection{EJS Templating}
+Dynamic HTML. Server sends data $\to$ EJS $\to$ Browser.\\
+\textbf{Controller (app.js):} \texttt{app.set('view engine', 'ejs');}
+\begin{lstlisting}
+app.get('/show', (req, res) => {
+    res.render('books', { books: [{ title: "Node", price: 20 }] }); 
+});
+\end{lstlisting}
+\textbf{View (books.ejs):}
+\begin{lstlisting}[language=HTML]
+<% books.forEach(function(book) { %> <li><%= book.title %> - $<%= book.price %></li> <% }); %>
+\end{lstlisting}
+
+% \compactsection{Handling Data (JSON vs. DB)}
+% \textbf{Local JSON:} \texttt{res.json(usersArray);} (Immediate)\\
+% \textbf{MongoDB (Mongoose):}
+% \begin{lstlisting}
+% app.get('/u', async (req, res) => {
+%     try { const u = await User.find({}); res.json(u); }
+%     catch (e) { res.status(500).send(e.message); }
+% });
+% \end{lstlisting}
+
+\topicsection{MONGODB \& MONGOOSE}
+
+NoSQL, document-oriented, written in C++.\\
+\textbf{DB:} Container for collections $\mid$ \textbf{Collection:} Doc group.\\
+\textbf{Doc:} Key-value pairs $\mid$ \textbf{CRUD:} Create, Read, Update, Delete.
+
+\compactsection{RDBMS vs. MongoDB}
+Table $\to$ Coll $\mid$ Row $\to$ Doc $\mid$ Column $\to$ Field $\mid$ Join $\to$ Embed/\texttt{\$lookup} $\mid$ PK $\to$ \texttt{\_id}
+
+\compactsection{Shell Commands}
+\texttt{use DB} (switch) $\mid$ \texttt{db.dropDatabase()} $\mid$ \texttt{db.createCollection("n")} $\mid$ \texttt{db.c.drop()} $\mid$ \texttt{db.c.find()}\\
+\textit{Note:} \texttt{db.c.copy()} is \textbf{INVALID}.
+
+\compactsection{Query Operators}
+\textbf{\$gt:} Greater than (\texttt{\{ age: \{ \$gt: 25 \} \}}) $\mid$ \textbf{\$set:} Partial update $\mid$ \textbf{Regex:} \texttt{\{ addr: /\^S/ \}} (starts with S).
+
+\compactsection{Mongoose Integration}
+\begin{lstlisting}
+const express = require('express');
+const mongoose = require('mongoose');//Install:npm init -y &&npm instal expres mongoos
+const app = express();
+app.use(express.json());
+mongoose.connect('mongodb://localhost:27017/test');
+const userSchema = new mongoose.Schema({
+    name: String,age: Number,email: String
+});
+const User = mongoose.model('User', userSchema);
+app.post('/users', async (req, res) => {//crud create
+    const user = new User(req.body);
+    await user.save();
+    res.json(user);});
+app.get('/users', async (req, res) => {//// READ ALL (with filtering/sorting)
+    const users = await User.find(req.query) // Filter from query params
+        .sort({name: 1}) // Sort by name
+        .limit(10); // Limit results
+    res.json(users);});
+app.get('/users/:id', async (req, res) => {// READ ONE
+    const user = await User.findById(req.params.id);
+    user ? res.json(user) : res.status(404).send('Not found');});
+app.put('/users/:id', async (req, res) => {// UPDATE
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    res.json(user);});
+app.delete('/users/:id', async (req, res) => {// DELETE
+    await User.findByIdAndDelete(req.params.id);res.send('Deleted');});
+app.get('/stats', async (req, res) => {//4. SPECIAL QUERIES AGGREGATION (count, average)
+    const stats = await User.aggregate([
+        {$group: {_id: null, count: {$sum: 1}, avgAge: {$avg: '$age'}}}
+    ]);res.json(stats[0]);});
+const postSchema = new mongoose.Schema({// 5. RELATIONSHIPS
+    title: String,
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'} // Reference
+});
+const Post = mongoose.model('Post', postSchema);
+app.get('/posts', async (req, res) => {// JOIN with populate()
+    const posts = await Post.find().populate('userId', 'name'); // Get user name
+    res.json(posts);});
+// Many-Many (Junction): Model w/ both IDs. Use: .find().populate('a').populate('b');
+app.listen(3000, () => console.log('Server running on port 3000'));
+\end{lstlisting}
+
+% \compactsection{Relationships (Connect Collections)}
+% \textbf{1-1 (Nesting):} Child doc inside parent.
+% \begin{lstlisting}
+% const userSchema = new mongoose.Schema({
+%   name: String,
+%   passport: { number: String, expiryDate: Date } // Embedded/Nested
+% });
+% \end{lstlisting}
+% \textbf{1-Many (Refs):}Use\texttt{mongoose.Types.ObjectId}+ \texttt{ref:"ColName".Use.popu()}.
+% \begin{lstlisting}
+% const postSchema = new mongoose.Schema({
+%   author: { 
+%     type: mongoose.Schema.Types.ObjectId, // Stores ID
+%     ref: 'User' // Links to User model
+%   }
+% });
+% const posts = await Post.find().populate('author'); // Joins data
+% \end{lstlisting}
+% \textbf{Many-Many (Junction):} Third model holding both IDs.
+% \begin{lstlisting}
+% const enrollSchema = new mongoose.Schema({
+%   student: { type: mongoose.Schema.Types.ObjectId, ref: 'Student' }, // ID Ref
+%   course: { type: mongoose.Schema.Types.ObjectId, ref: 'Course' }  // ID Ref
+% });
+% // Populates both linked documents:
+% const e = await Enrollment.find().populate('student').populate('course');
+% \end{lstlisting}
+% \compactsection{Advanced Node.js/Mongo}
+% \textbf{Insert:} \texttt{insertOne(obj, cb)} $\mid$ \textbf{Sort:} \texttt{find().sort(\{n:1\})} $\mid$ \textbf{Limit:} \texttt{find().limit(5)} $\mid$ \textbf{\$lookup:} Join pipeline.
+
+\topicsection{NODE.JS FUNDAMENTALS}
+
+\compactsection{Node.js Fundamentals}
+Async, single-threaded runtime. \\
+\textbf{Libuv:} C++ library for I/O thread pool. \\
+\textbf{NPM:} \texttt{npm init} $\mid$ \texttt{npm install -g} (Global) $\mid$ \textbf{dep:} Prod $\mid$ \textbf{devDep:} Testing $\mid$ \textbf{lockfile:} Reproduction $\mid$ \textbf{npm ci:} Fast clean install.
+
+\compactsection{Global \& Utility Modules}
+\textbf{OS:} \texttt{platform(), totalmem()} $\mid$ \textbf{Path:} \texttt{resolve(), extname()}\\
+\textbf{DNS:} \texttt{lookup(domain, cb)} $\mid$ \textbf{Console:} \texttt{time(), timeEnd()}\\
+\textbf{Globals:} \texttt{\_\_dirname} (folder), \texttt{\_\_filename} (file)
+
+\compactsection{Debugging \& Callbacks}
+\textbf{Console:} \texttt{trace()} (stack). \textbf{Callbacks:} Error-First pattern.
+
+\topicsection{REACT JS}
+
+% \compactsection{Fundamentals \& Components}
+% \textbf{Virtual DOM:} Lightweight copy of Real DOM. React uses "Diffing" to update only changed parts (fast) vs Real DOM (slow reflows/repaints). \\
+% \textbf{Functional:} Presentations; uses props. \textbf{Class:} Logic/State; needs \texttt{render()}. \\
+% \textbf{JSX Rules:} 1. Single Root element. 2. \texttt{className} instead of \texttt{class}. 3. JS in \texttt{\{ \}}.
+% 
+% \compactsection{State vs. Props (Exam Heavy)}
+% \textbf{State:} Internal to component; mutable via \texttt{setState}; triggers re-render on change. \\
+% \textbf{Props:} Passed from parent (External); read-only (Immutable); triggers re-render when parent changes them.
+% 
+% 
+% \compactsection{Events, Lists \& Keys}
+% \textbf{this Context:} Handlers lose \textit{this}. Use \textbf{Arrow Functions}. \\
+% \textbf{Event Listeners:} Pass functions as props. Use \texttt{e.target} for values.
+% 
+% 
+% \compactsection{Forms \& Data (Axios)}
+% \textbf{Controlled Comp:} State handles data. Use \texttt{e.preventDefault()} on submit.
+% 
+% 
+% \compactsection{React Router (v5)}
+% \texttt{<BrowserRouter>} wraps app. \texttt{<Switch>} renders 1st match. \\
+% \textbf{Link vs NavLink:} Prevent reload. \texttt{NavLink} adds "active" class. \\
+% \textbf{Params:} Access \texttt{/post/:id} via \texttt{this.props.match.params.id}.
+
+\compactsection{HOC \& Redux}
+\textbf{Higher-Order Component:} Func taking component $\to$ returns enhanced component (Loading, Auth).
+
+\textbf{Redux:} Store (data), Actions (intent), Reducers (how state changes).
+
+\compactsection{�� Exam Strategy: Find the Error}
+\begin{itemize}
+    \item \textbf{this:} Is a class method missing arrow syntax?
+    \item \textbf{setState:} Mutating \texttt{this.state} directly?
+    \item \textbf{key:} \texttt{.map()} missing unique key prop?
+    \item \textbf{JSX:} Multiple root elements in one return?
+    \item \textbf{Props:} Is a child trying to modify \texttt{this.props}? (Read-only!)
+\end{itemize}
+
+
+\compactsection{Detailed React Example (State, Routing)}
+\begin{lstlisting}[language=JavaScript, basicstyle=\fontsize{5}{5}\selectfont\ttfamily]
+import React, { Component } from 'react';import axios from 'axios'; 
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+const BookList = ({ books, onRemove }) => (// FUNCTIONAL COMPONENT - Stateless, receives props
+  books.length === 0 ? <p>No books!</p> : 
+  <div>{books.map(book => (
+    <div key={book.id}> {/* KEY required for list items */}
+      <h3>{book.title}</h3>
+      <p>Author: {book.author}</p>
+      <button onClick={() => onRemove(book.id)}>Remove</button> {/* Event handler */}
+    </div>
+  ))}</div>
+);
+class LibraryApp extends Component {// CLASS COMPONENT - Has state and lifecycle methods
+  state = { books: [], loading: true, error: null, title: '', author: '' };
+  componentDidMount() { this.fetchBooks(); }// LIFECYCLE METHOD - Runs once after component mounts
+  fetchBooks = async () => {// ASYNC API CALL - Fetch data with axios
+    try {
+      this.setState({ loading: true }); // Update state - triggers re-render
+      const res = await axios.get('https://.com/books');
+      this.setState({ 
+        books: res.data.map((p,i) => ({ id:p.id, title:p.title, author:`Author ${i+1}` })),
+        loading: false 
+      });
+    } catch(e) {this.setState({ error: 'Load failed', loading: false });}
+  };
+  handleAdd = (e) => {// EVENT HANDLER - Form submission
+    e.preventDefault(); // Prevent page reload
+    const { title, author, books } = this.state;
+    if(!title.trim() || !author.trim()) return;
+    this.setState({
+      books: [...books, { id:Date.now(), title, author }], // Spread operator
+      title: '', author: '' // Clear inputs
+    });
+  };
+  handleRemove = (id) => {// EVENT HANDLER - Delete item
+    this.setState({ books: this.state.books.filter(b => b.id !== id) }); // Update state
+  };
+  render() {
+    const { books, loading, error, title, author } = this.state; // Destructure
+    return (
+      <BrowserRouter>// REACT ROUTER - Enables multiple pages
+        <div>
+          {/* NAVIGATION LINKS */}
+          <nav><Link to="/">Home</Link> | <Link to="/add">Add</Link></nav>
+          <Route exact path="/">
+            <h1>My Library</h1>
+            {loading && <p>Loading...</p>} {/* Conditional rendering */}
+            {error && <p style={{color:'red'}}>{error}</p>}
+            {/* PASSING PROPS - Parent to child */}
+            {!loading && <BookList books={books} onRemove={this.handleRemove} />}
+            <button onClick={this.fetchBooks}>Refresh</button>
+          </Route>
+		  <Route path="/add">
+            <h2>Add Book</h2>
+            {/* CONTROLLED COMPONENT - Input bound to state */}
+            <form onSubmit={this.handleAdd}>
+              <input value={title} onChange={e=>this.setState({title:e.target.value})} placeholder="Title"/>
+              <button>Add</button>
+            </form>
+            <Link to="/">← Back</Link>
+          </Route>
+          <Route path="/book/:id">{/* DYNAMIC ROUTE - URL parameters */}
+            {({match}) => {
+              const book = books.find(b => b.id === parseInt(match.params.id));
+              return book ? <div><h3>{book.title}</h3><p>By {book.author}</p></div> : <p>Not found</p>;
+            }}
+          </Route>
+}});</BrowserRouter></div>
+\end{lstlisting}
+
+\topicsection{REACT HOOKS}
+\forcefivept
+\fontsize{4}{4.8}\selectfont\ttfamily
+\begin{lstlisting}[language=JavaScript]
+// 1. useContext: Accesses Context to share data w/o prop drilling.Use: Multiple components need same data
+const ThemeContext = createContext();
+const ThemeToggle = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+  return <button onClick={() => setTheme('dark')}>Dark Mode</button>;
+};// 2. useRef: Mutable ref persists across renders. Use: DOM 
+access, prev values, timers. 
+function FocusInput() {
+  const inputRef = useRef(null); const focusIn = () => inputRef.current.focus();
+  return (<><input ref={inputRef} /><button onClick={focusIn}>Focus</button></>);
+}// Remember: Changing .current doesn't trigger re-render.
+// 3. useMemo: Memoizes expensive calcs to improve performance. Use: Heavy comps, derived values. 
+function ProductList({ products }) {
+  const total = useMemo(() => products.reduce((s, p) => s + p.price, 0), [products]);
+  return <div>Total: ${total}</div>;
+}// Remember: Only recalc when deps change.
+// 4. useId: Generates unique stable IDs for accessibility. Use: Form labels, ARIA. 
+function LoginForm() {
+  const emailId = useId(); const passId = useId();
+  return (<form><label htmlFor={emailId}>Email</label><input id={emailId} type="email" /></form>);
+}// Remember: Consistent across server/client.
+// 5. useReducer: Complex state logic w/ actions/reducers. Use: Complex state w/ multi sub-values. 
+const counterReducer = (s, a) => {
+  switch(a.type) { case 'inc': return {c:s.c+1}; case 'dec': return {c:s.c-1}; default: return s; }
+};// Remember: (state, action) => newState.
+function Counter() {
+  const [s, d] = useReducer(counterReducer, { c: 0 });
+  return (<div>{s.c}<button onClick={()=>d({type:'inc'})}>+</button></div>);
+}// 6. useActionState: Handles form states w/ built-in pending. Use: Form submits, async actions.
+// 7. useSyncExternalStore: Subscribes to external stores outside React. Use: Redux, Zustand, browser APIs.
+// 8. useImperativeHandle: Customizes value exposed to parent via ref. Use: Exposing child methods.
+// 9. useTransition: Marks updates as non-urgent. Use: Slow renders, search filtering, tab switching.
+// 10. useDeferredValue: Defers updating non-urgent values. Use: Search, large lists, responsive UI.
+// 11. useLayoutEffect: Runs sync after DOM mutations. Use: Measuring DOM, animations before paint.
+// 12. useDebugValue: Custom labels for hooks in DevTools. Use: Custom hooks for better debugging.
+// 13. useInsertionEffect: Runs before DOM mutations. Use: Injecting dynamic styles (CSS-in-JS).
+\end{lstlisting}
+
+\end{multicols*}
+
+\end{document}
