@@ -6,10 +6,15 @@ Organized notes and resources for my university courses. Handwritten PDFs have a
 |---|---|
 | AI / Machine Learning | [ai-machine-learning](ai-machine-learning/) |
 | Algorithms | [algorithms](algorithms/) |
+| Computer Networks | [computer-networks](computer-networks/) |
 | Databases | [databases](databases/) |
+| Game Development | [game-development](game-development/) |
 | Generative AI | [generative-ai](generative-ai/) |
 | Information Security | [information-security](information-security/) |
 | MLOps | [mlops](mlops/) |
+| Operating Systems | [operating-systems](operating-systems/) |
+| Probability & Statistics | [probability-statistics](probability-statistics/) |
+| Software Design & Architecture | [software-design-architecture](software-design-architecture/) |
 | Web Programming | [web-programming](web-programming/) |
 
 ### Other courses
